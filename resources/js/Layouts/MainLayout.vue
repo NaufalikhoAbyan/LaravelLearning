@@ -1,6 +1,6 @@
 <template>
-    <Link href="/">Main Page</Link>&nbsp;
-    <Link href="/hello">Show Page</Link>
+    <Link href="/listing">Listing All</Link>&nbsp;
+    <Link href="/listing/create">Listing Create</Link>
     <!-- <div>THe page with time {{ timer }}</div> -->
     <div v-if="$page.props.flash.success" class="success">
         {{ $page.props.flash.success }}
@@ -10,6 +10,10 @@
 
 <script setup>
     import { Link } from '@inertiajs/vue3';
+    
+    // import { computed } from 'vue';
+
+    // const flashSuccess = computed( () => $page.props.value.flash.success );
     // import { ref } from 'vue';
 
     // const timer = ref(0);
