@@ -9,7 +9,7 @@
             <Link href="/listing">LaraZillow</Link>
           </div>
           <div>
-            <Link href="/listing/create" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded-md">+ New listing</Link>
+            <Link href="/listing/create" class="btn-primary">+ New listing</Link>
           </div>
         </nav>
       </div>
