@@ -19,8 +19,8 @@
                     Monthly Payment
                 </template>
                 <div>
-                    <label class="label">Intereset rate ({{ intersetRate }}%)</label>
-                    <input v-model.number="intersetRate" type="range" min="0.1" max="30" step="0.1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-200">
+                    <label class="label">Intereset rate ({{ interestRate }}%)</label>
+                    <input v-model.number="interestRate" type="range" min="0.1" max="30" step="0.1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-200">
 
                     <label class="label">Duration ({{ duration }} Years)</label>
                     <input v-model.number="duration" type="range" min="3" max="35" step="1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-200">
@@ -42,21 +42,14 @@
     import Box from '../../Components/UI/Box.vue';
 
     import {ref, computed} from 'vue';
+    import { useMonthlyPayment } from '../../Composables/useMonthlyPayment';
 
-    const intersetRate = ref(2.5);
+    const interestRate = ref(2.5);
     const duration = ref(25);
 
     const props = defineProps({
         listing: Object
     })
 
-    const monthlyPayment = computed(
-        () =>{
-            const principle = props.listing.price;
-            const monthlyInterest = intersetRate.value / 100 / 12;
-            const numberOfPaymentMonths = duration.value * 12;
-
-            return principle * monthlyInterest * (Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) / (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1)
-        }
-    )
+    const monthlyPayment = computed(() => useMonthlyPayment(props.listing.price, interestRate.value, duration.value))
 </script>
