@@ -36,13 +36,13 @@
 </template>
 
 <script setup>
-    import ListingSpace from '../../Components/ListingSpace.vue';
-    import ListingAddress from '../../Components/listingAddress.vue';
-    import Price from '../../Components/Price.vue';
-    import Box from '../../Components/UI/Box.vue';
+    import ListingSpace from '@/Components/ListingSpace.vue';
+    import ListingAddress from '@/Components/listingAddress.vue';
+    import Price from '@/Components/Price.vue';
+    import Box from '@/Components/UI/Box.vue';
 
     import {ref, computed} from 'vue';
-    import { useMonthlyPayment } from '../../Composables/useMonthlyPayment';
+    import { useMonthlyPayment } from '@/Composables/useMonthlyPayment';
 
     const interestRate = ref(2.5);
     const duration = ref(25);
