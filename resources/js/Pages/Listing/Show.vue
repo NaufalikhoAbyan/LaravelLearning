@@ -28,7 +28,21 @@
 
                 <div class="text-gray-600 dark:text-gray-300 mt-2">
                     <div class="text-gray-400">Your monthly payment</div>
-                    <Price :price="monthlyPayment" class="text-3xl"/>
+                    <Price :price="monthlyPayment.monthlyPayment" class="text-3xl"/>
+                </div>
+                <div class="mt-2">
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <div>Principal Paid</div>
+                        <Price :price="listing.price"/>
+                    </div>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <div>Total Paid</div>
+                        <Price :price="monthlyPayment.totalPaid"/>
+                    </div>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <div>Interest Paid</div>
+                        <Price :price="monthlyPayment.totalInterest"/>
+                    </div>
                 </div>
             </Box>
         </div>
