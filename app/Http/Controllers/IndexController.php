@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -10,6 +11,7 @@ class IndexController extends Controller
         return inertia('Index/Index');
     }
     public function show(){
+        dd(Auth::user());
         return inertia('Index/Show',[
             'message' => 'Hello from laravel'
         ]);
