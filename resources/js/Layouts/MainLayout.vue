@@ -13,7 +13,8 @@
             <Link href="/listing/create" class="btn-primary">+ New listing</Link>
             <Link href="/logout" method="DELETE" as="button">Logout</Link>
           </div>
-          <div v-else>
+          <div v-else class="flex items-center gap-4">
+            <Link href="/register">Register</Link>
             <Link href="/login">Sign-In</Link>
           </div>
         </nav>
