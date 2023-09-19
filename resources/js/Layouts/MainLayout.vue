@@ -8,8 +8,13 @@
           <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
             <Link href="/listing">LaraZillow</Link>
           </div>
-          <div>
+          <div v-if="$page.props.login" class="flex items-center gap-4">
+            <div class="text-sm text-gray-400">{{ $page.props.login.name }}</div>
             <Link href="/listing/create" class="btn-primary">+ New listing</Link>
+            <Link href="/logout" method="DELETE" as="button">Logout</Link>
+          </div>
+          <div v-else>
+            <Link href="/login">Sign-In</Link>
           </div>
         </nav>
       </div>
