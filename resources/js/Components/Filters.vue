@@ -49,7 +49,6 @@ const filter = () =>{
     filterForm.get('/listing',{
         preserveState: true,
         preserveScroll: true,
-        only: ['priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo']
     })
 }
 
