@@ -1,23 +1,23 @@
 <template>
     <form @submit.prevent="filter">
-        <div class="flex mb-8 mt-4 gap-2 items-center">
-            <div>
+        <div class="flex mb-8 mt-4 gap-2 items-center flex-wrap">
+            <div class="flex flex-nowrap">
                 <input v-model.number="filterForm.priceFrom" type="text" placeholder="price from" class="input-filter-l w-28">
                 <input v-model.number="filterForm.priceTo" type="text" placeholder="price to" class="input-filter-r w-28">
             </div>
-            <div>
+            <div class="flex flex-nowrap">
                 <select v-model="filterForm.beds" class="input-filter-l w-28">
                     <option :value="null">beds</option>
                     <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
-                    <option value="">6+</option>
+                    <option value="6">6+</option>
                 </select>
                 <select v-model="filterForm.baths" class="input-filter-r w-28">
                     <option :value="null">baths</option>
                     <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
-                    <option value="">6+</option>
+                    <option value="6">6+</option>
                 </select>
             </div>
-            <div>
+            <div class="flex flex-nowrap">
                 <input v-model.number="filterForm.areaFrom" type="text" placeholder="area from" class="input-filter-l w-28">
                 <input v-model.number="filterForm.areaTo" type="text" placeholder="area to" class="input-filter-r w-28">
             </div>
