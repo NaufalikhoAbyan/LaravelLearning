@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RealtorListingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -32,3 +33,7 @@ Route::delete('/logout', [AuthController::class, 'destroy'])->name('login.destro
 
 Route::get('/register', [UserAccoutController::class, 'create'])->name('register.create');
 Route::post('/register', [UserAccoutController::class, 'store'])->name('register.store');
+
+Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function(){
+    Route::resource('/listing', RealtorListingController::class);
+});
