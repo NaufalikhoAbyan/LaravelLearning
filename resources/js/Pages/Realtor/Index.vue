@@ -1,7 +1,7 @@
 <template>
     <h1 class="text-3xl mb-4">Your Listings</h1>
-    <section class="mb-4">
-        Filters
+    <section>
+        <RealtorFilters/>
     </section>
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
         <Box v-for="listing in listings" :key="listing.id">
@@ -14,9 +14,9 @@
                     <ListingAddress :listing="listing" class="text-gray-500"/>
                 </div>
                 <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
-                    <Link class="btn-outline text-xs font-medium">Preview</Link>
-                    <Link class="btn-outline text-xs font-medium">Edit</Link>
-                    <Link class="btn-outline text-xs font-medium">Delete</Link>
+                    <Link class="btn-outline text-xs font-medium" :href="`/listing/${listing.id}`">Preview</Link>
+                    <Link class="btn-outline text-xs font-medium" href="">Edit</Link>
+                    <Link class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>
                 </div>
             </div>
         </Box>
@@ -29,6 +29,7 @@
     import Price from "@/Components/Price.vue";
     import ListingSpace from "@/Components/ListingSpace.vue";
     import ListingAddress from "@/Components/listingAddress.vue";
+    import RealtorFilters from "@/Pages/Realtor/Index/Components/RealtorFilters.vue";
 
     const props = defineProps({
         listings: Array

@@ -14,7 +14,7 @@
         </div>
         <div v-if="$page.props.login">
             <Link :href="`/listing/${listing.id}/edit`">Edit</Link>&nbsp;
-            <Link :href="`/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>
+            <!--<Link :href="`/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>-->
         </div>
     </Box>
 </template>
@@ -34,5 +34,5 @@
     })
 
     const monthlyPayment = computed(() => useMonthlyPayment(props.listing.price, 2.5, 25))
-    
+
 </script>
