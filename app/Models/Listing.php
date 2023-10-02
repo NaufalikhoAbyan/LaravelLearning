@@ -41,6 +41,7 @@ class Listing extends Model
             ->when(isset($filters['beds']), fn ($query) => $query->where('beds', (int)$filters['beds'] < 6 ? "=" : ">=", (int)$filters['beds']))
             ->when(isset($filters['baths']), fn ($query) => $query->where('baths', (int)$filters['baths'] < 6 ? "=" : ">=" , (int)$filters['baths']))
             ->when(isset($filters['areaFrom']), fn ($query) => $query->where('area', '>=', $filters['areaFrom']))
-            ->when(isset($filters['areaTo']), fn ($query) => $query->where('area', '<=', $filters['areaTo']));
+            ->when(isset($filters['areaTo']), fn ($query) => $query->where('area', '<=', $filters['areaTo']))
+            ->when($filters['deleted'] ?? false, fn ($query) => $query->withTrashed());
     }
 }
