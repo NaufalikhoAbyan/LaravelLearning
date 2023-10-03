@@ -15,7 +15,7 @@
                 </div>
                 <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
                     <Link class="btn-outline text-xs font-medium" :href="`/listing/${listing.id}`">Preview</Link>
-                    <Link class="btn-outline text-xs font-medium" href="">Edit</Link>
+                    <Link class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}/edit`">Edit</Link>
                     <Link class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>
                 </div>
             </div>

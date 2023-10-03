@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="form.post('/listing')">
+    <form @submit.prevent="form.post('/realtor/listing')">
         <div class="grid grid-cols-6 gap-4">
             <div class="col-span-2">
                 <label class="label">Beds</label>

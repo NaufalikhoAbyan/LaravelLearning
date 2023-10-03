@@ -12,10 +12,6 @@
                 <ListingAddress :listing="listing" class="text-gray-500"/>
             </Link>
         </div>
-        <div v-if="$page.props.login">
-            <Link :href="`/listing/${listing.id}/edit`">Edit</Link>&nbsp;
-            <!--<Link :href="`/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>-->
-        </div>
     </Box>
 </template>
 

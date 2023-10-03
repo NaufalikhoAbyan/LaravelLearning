@@ -24,7 +24,6 @@ Route::get('/', function(){
 });
 Route::get('/hello', [IndexController::class, 'show']);
 
-Route::resource('/listing', ListingController::class)->only(['store', 'create', 'update', 'edit'])->middleware('auth');
 Route::resource('/listing', ListingController::class)->only(['index', 'show']);
 
 Route::get('/login', [AuthController::class, 'create'])->name('login.create');
@@ -35,5 +34,5 @@ Route::get('/register', [UserAccoutController::class, 'create'])->name('register
 Route::post('/register', [UserAccoutController::class, 'store'])->name('register.store');
 
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function(){
-    Route::resource('/listing', RealtorListingController::class)->only(['index', 'destroy']);
+    Route::resource('/listing', RealtorListingController::class)->except(['show']);
 });

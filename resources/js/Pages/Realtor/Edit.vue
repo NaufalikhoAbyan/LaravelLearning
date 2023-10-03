@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="form.put(`/listing/${props.listing.id}`)">
+    <form @submit.prevent="form.put(`/realtor/listing/${props.listing.id}`)">
         <div class="grid grid-cols-6 gap-4">
             <div class="col-span-2">
                 <label class="label">Beds</label>

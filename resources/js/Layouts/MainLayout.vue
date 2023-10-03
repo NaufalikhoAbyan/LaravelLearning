@@ -10,7 +10,7 @@
           </div>
           <div v-if="$page.props.login" class="flex items-center gap-4">
             <Link class="text-sm text-gray-400" href="/realtor/listing">{{ $page.props.login.name }}</Link>
-            <Link href="/listing/create" class="btn-primary">+ New listing</Link>
+            <Link href="/realtor/listing/create" class="btn-primary">+ New listing</Link>
             <Link href="/logout" method="DELETE" as="button">Logout</Link>
           </div>
           <div v-else class="flex items-center gap-4">
