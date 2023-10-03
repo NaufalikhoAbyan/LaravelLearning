@@ -34,5 +34,6 @@ Route::get('/register', [UserAccoutController::class, 'create'])->name('register
 Route::post('/register', [UserAccoutController::class, 'store'])->name('register.store');
 
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function(){
+    Route::put('/listing/{listing}/restore', [RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
     Route::resource('/listing', RealtorListingController::class)->except(['show']);
 });
