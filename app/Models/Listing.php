@@ -13,16 +13,9 @@ class Listing extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public $fillable = [
-        'beds',
-        'baths',
-        'area',
-        'city',
-        'code',
-        'street',
-        'street_nr',
-        'price'
-    ];
+    protected $fillable = ['beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price'];
+
+    protected $sortable = ['created_at', 'price'];
 
     public function owner(): BelongsTo
     {
@@ -42,6 +35,7 @@ class Listing extends Model
             ->when(isset($filters['baths']), fn ($query) => $query->where('baths', (int)$filters['baths'] < 6 ? "=" : ">=" , (int)$filters['baths']))
             ->when(isset($filters['areaFrom']), fn ($query) => $query->where('area', '>=', $filters['areaFrom']))
             ->when(isset($filters['areaTo']), fn ($query) => $query->where('area', '<=', $filters['areaTo']))
-            ->when($filters['deleted'] ?? false, fn ($query) => $query->withTrashed());
+            ->when($filters['deleted'] ?? false, fn ($query) => $query->withTrashed())
+            ->when(isset($filters['by']), fn ($query) => !in_array($filters['by'], $this->sortable) ? $query : $query->orderBy($filters['by'], $filters['order'] ?? 'desc'));
     }
 }
