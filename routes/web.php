@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RealtorListingController;
+use App\Http\Controllers\RealtorListingImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -36,4 +37,5 @@ Route::post('/register', [UserAccoutController::class, 'store'])->name('register
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function(){
     Route::put('/listing/{listing}/restore', [RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
     Route::resource('/listing', RealtorListingController::class)->except(['show']);
+    Route::resource('/listing/{listing}/image', RealtorListingImageController::class)->only(['create', 'store']);
 });

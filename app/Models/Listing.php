@@ -22,6 +22,11 @@ class Listing extends Model
         return $this->belongsTo(User::class, 'by_user_id');
     }
 
+    public function images()
+    {
+        return $this->hasMany(ListingImage::class);
+    }
+
     public function scopeMostRecent($query)
     {
         return $query->orderByDesc('created_at');
