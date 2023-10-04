@@ -18,7 +18,7 @@
                         <Link class="btn-outline text-xs font-medium" :href="`/listing/${listing.id}`">Preview</Link>
                         <Link class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}/edit`">Edit</Link>
                         <Link v-if="!listing.deleted_at" class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}`" method="DELETE" as="button">Delete</Link>
-                        <Link v-else class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}/image/create`" as="button" method="put">Restore</Link>
+                        <Link v-else class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}/restore`" as="button" method="put">Restore</Link>
                     </div>
                     <div class="mt-2">
                         <Link class="btn-outline text-xs font-medium w-full block text-center" :href="`/realtor/listing/${listing.id}/image/create`">Images</Link>

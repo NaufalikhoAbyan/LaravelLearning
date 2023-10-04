@@ -23,6 +23,7 @@ class RealtorListingImageController extends Controller
                 $listing->images()->create([
                     'filename' => $path
                 ]);
+                return redirect()->back()->with('success', 'Image uploaded successfully!');
             }
         }
     }
