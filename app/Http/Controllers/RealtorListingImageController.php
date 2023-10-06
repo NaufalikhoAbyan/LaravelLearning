@@ -9,6 +9,7 @@ class RealtorListingImageController extends Controller
 {
     public function create(Listing $listing)
     {
+        $listing->load('images');
         return inertia('Realtor/ListingImage/Create', [
             'listing' => $listing
         ]);
@@ -23,8 +24,8 @@ class RealtorListingImageController extends Controller
                 $listing->images()->create([
                     'filename' => $path
                 ]);
-                return redirect()->back()->with('success', 'Image uploaded successfully!');
             }
         }
+        return redirect()->back()->with('success', 'Image uploaded successfully!');
     }
 }
