@@ -12,8 +12,9 @@
     <Box v-if="listing.images.length" class="mt-4">
         <template #header>Current Listing Images</template>
         <section class="grid grid-cols-3 mt-4 gap-4">
-            <div v-for="image in listing.images" :key="image.id">
+            <div v-for="image in listing.images" :key="image.id" class="flex flex-col justify-between">
                 <img :src="image.src" alt="" class="rounded-md">
+                <Link :href="`/realtor/listing/${listing.id}/image/${image.id}`" method="DELETE" as="button" class="mt-2 btn-outline text-xs">Delete</Link>
             </div>
         </section>
     </Box>
@@ -21,7 +22,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import {useForm} from "@inertiajs/vue3";
+import {useForm, Link} from "@inertiajs/vue3";
 import {computed} from "vue";
 
 const props = defineProps({
