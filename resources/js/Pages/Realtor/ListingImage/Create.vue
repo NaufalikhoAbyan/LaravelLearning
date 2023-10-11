@@ -5,8 +5,13 @@
             <section class="flex items-center gap-2 my-4">
                 <input type="file" multiple @input="addFiles" class="border rounded-md file:px-4 file:py-2 border-gray-200 dark:border-gray-700 file:text-gray-700 file:dark:text-gray-400 file:border-0 file:bg-gray-100 file:dark:bg-gray-800 file:font-medium file:hover:bg-gray-200 file:dark:hover:bg-gray-700 file:hover:cursor-pointer file:mr-4">
                 <button type="submit" class="btn-outline" :disabled="!canUpload">Send</button>
-                <button class="btn-outline" @click="form.reset">Reset</button>
+                <button class="btn-outline" @click="form.reset('images')">Reset</button>
             </section>
+            <div v-if="imageErrors.length" class="input-error">
+                <div v-for="(error, index) in imageErrors" :key="index">
+                    {{ error }}
+                </div>
+            </div>
         </form>
     </Box>
     <Box v-if="listing.images.length" class="mt-4">
@@ -31,6 +36,10 @@ const props = defineProps({
 
 const form = useForm({
     images: []
+})
+
+const imageErrors = computed(() => {
+    return Object.values(form.errors)
 })
 
 const canUpload = computed(() => { return form.images.length > 0 });
