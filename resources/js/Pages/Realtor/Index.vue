@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-3xl mb-4">Your Listings</h1>
+    <h1 class="text-3xl mb-4">Your Listings ({{listingCount}})</h1>
     <section>
         <RealtorFilters :filters="props.filters"/>
     </section>
@@ -21,7 +21,7 @@
                         <Link v-else class="btn-outline text-xs font-medium" :href="`/realtor/listing/${listing.id}/restore`" as="button" method="put">Restore</Link>
                     </div>
                     <div class="mt-2">
-                        <Link class="btn-outline text-xs font-medium w-full block text-center" :href="`/realtor/listing/${listing.id}/image/create`">Images</Link>
+                        <Link class="btn-outline text-xs font-medium w-full block text-center" :href="`/realtor/listing/${listing.id}/image/create`">Images ({{listing.images_count}})</Link>
                     </div>
                 </div>
             </div>
@@ -44,5 +44,6 @@
     const props = defineProps({
         listings: Object,
         filters: Object,
+        listingCount: Number,
     })
 </script>

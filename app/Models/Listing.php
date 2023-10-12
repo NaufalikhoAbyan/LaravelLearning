@@ -41,6 +41,6 @@ class Listing extends Model
             ->when(isset($filters['areaFrom']), fn ($query) => $query->where('area', '>=', $filters['areaFrom']))
             ->when(isset($filters['areaTo']), fn ($query) => $query->where('area', '<=', $filters['areaTo']))
             ->when($filters['deleted'] ?? false, fn ($query) => $query->withTrashed())
-            ->when(isset($filters['by']), fn ($query) => !in_array($filters['by'], $this->sortable) ? $query : $query->orderBy($filters['by'], $filters['order'] ?? 'desc'));
+            ->when(isset($filters['by']), fn ($query) => !in_array($filters['by'], $this->sortable) ? $query : $query->orderBy($filters['by'] ?? 'created_at', $filters['order'] ?? 'desc'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +23,9 @@ class RealtorListingController extends Controller
         ];
 
         return inertia('Realtor/Index', [
-            'listings' => Auth::user()->listings()->filter($filters)->paginate(6)->withQueryString(),
+            'listings' => Auth::user()->listings()->filter($filters)->withCount('images')->paginate(6)->withQueryString(),
             'filters' => $filters,
+            'listingCount' => Auth::user()->listings()->count(),
         ]);
     }
 
