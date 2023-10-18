@@ -17,7 +17,7 @@
                 <ListingSpace :listing="listing" class="text-lg"/>
                 <ListingAddress :listing="listing" class="text-gray-500"/>
             </Box>
-            <Box>
+            <Box class="mt-2">
                 <template #header>
                     Monthly Payment
                 </template>
@@ -48,6 +48,8 @@
                     </div>
                 </div>
             </Box>
+
+            <MakeOffer :listing-id="listing.id" :price="listing.price"/>
         </div>
     </div>
 </template>
@@ -60,6 +62,7 @@
 
     import {ref, computed} from 'vue';
     import { useMonthlyPayment } from '@/Composables/useMonthlyPayment';
+    import MakeOffer from "@/Pages/Listing/Show/Components/MakeOffer.vue";
 
     const interestRate = ref(2.5);
     const duration = ref(25);
