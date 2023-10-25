@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\RealtorListingController;
 use App\Http\Controllers\RealtorListingImageController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
@@ -26,6 +26,8 @@ Route::get('/', function(){
 Route::get('/hello', [IndexController::class, 'show']);
 
 Route::resource('/listing', ListingController::class)->only(['index', 'show']);
+
+Route::resource('listing.offer', OfferController::class)->only(['store'])->middleware('auth');
 
 Route::get('/login', [AuthController::class, 'create'])->name('login.create');
 Route::post('/login', [AuthController::class, 'store'])->name('login.store');

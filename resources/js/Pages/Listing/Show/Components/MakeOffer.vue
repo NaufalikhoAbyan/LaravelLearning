@@ -1,10 +1,11 @@
 <template>
     <Box class="mt-2">
         <template #header>Make an Offer</template>
-        <form>
-            <input v-model.number="form.price" type="text" class="input mt-2">
-            <input v-model.number="form.price" type="range" :min="props.price/2" :max="props.price*2" step="1000" class=" mt-2 w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-200">
+        <form @submit.prevent="makeOffer">
+            <input v-model.number="form.amount" type="text" class="input mt-2">
+            <input v-model.number="form.amount" type="range" :min="min" :max="max" step="1000" class=" mt-2 w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-200">
             <button class="mt-2 btn-outline w-full">Make an Offer</button>
+            {{form.errors.amount}}
         </form>
         <div class="flex justify-between text-gray-500 mt-2">
             <div>Difference</div>
@@ -25,10 +26,25 @@ const props = defineProps({
 })
 
 const form = useForm({
-    price: props.price
+    amount: props.price
 })
 
 const difference = computed(() => {
-    return props.price - form.price;
+    return props.price - form.amount;
 });
+
+const max = computed(() =>{
+    return Math.round(props.price * 2);
+})
+
+const min = computed(() =>{
+    return Math.round(props.price / 2);
+})
+
+const makeOffer = () => {
+    form.post(`/listing/${props.listingId}/offer`,{
+        preserveScroll: true,
+        preserveState: true,
+    })
+}
 </script>
