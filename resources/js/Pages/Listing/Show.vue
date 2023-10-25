@@ -49,7 +49,7 @@
                 </div>
             </Box>
 
-            <MakeOffer :listing-id="listing.id" :price="listing.price"/>
+            <MakeOffer :listing-id="listing.id" :price="listing.price" @offer-updated="offer = $event"/>
         </div>
     </div>
 </template>
@@ -71,7 +71,9 @@
         listing: Object
     })
 
-    const usemonthlyPaymentresult = computed(() => useMonthlyPayment(props.listing.price, interestRate.value, duration.value))
+    const offer = ref(props.listing.price);
+
+    const usemonthlyPaymentresult = computed(() => useMonthlyPayment(offer.value, interestRate.value, duration.value))
     const monthlyPayment = computed(() => usemonthlyPaymentresult.value.monthlyPayment);
     const totalInterest = computed(() => usemonthlyPaymentresult.value.totalInterest);
     const totalPaid = computed(() => usemonthlyPaymentresult.value.totalPaid);
