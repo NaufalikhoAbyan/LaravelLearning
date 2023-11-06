@@ -31,7 +31,7 @@ const form = useForm({
 })
 
 const difference = computed(() => {
-    return props.price - form.amount;
+    return form.amount - props.price;
 });
 
 const max = computed(() =>{

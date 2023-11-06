@@ -2,7 +2,7 @@
     <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
         <Box class="md:col-span-7 flex items-center w-full">
             <div v-if="listing.images.length" class="grid grid-cols-2 gap-1">
-                <img v-for="image in listing.images" :key="image.id" :src="image.src"/>
+                <img v-for="image in listing.images" alt="Listing Images" :key="image.id" :src="image.src"/>
             </div>
             <div v-else class="w-full text-center font-medium text-gray-500">
                 No Images
@@ -49,7 +49,9 @@
                 </div>
             </Box>
 
-            <MakeOffer :listing-id="listing.id" :price="listing.price" @offer-updated="offer = $event"/>
+            <MakeOffer :listing-id="listing.id" :price="listing.price" @offer-updated="offer = $event" v-if="$page.props.login && !offerMade"/>
+
+            <OfferMade :offer-made="props.offerMade" v-if="$page.props.login && offerMade"/>
         </div>
     </div>
 </template>
@@ -63,12 +65,14 @@
     import {ref, computed} from 'vue';
     import { useMonthlyPayment } from '@/Composables/useMonthlyPayment';
     import MakeOffer from "@/Pages/Listing/Show/Components/MakeOffer.vue";
+    import OfferMade from "@/Pages/Listing/Show/Components/OfferMade.vue";
 
     const interestRate = ref(2.5);
     const duration = ref(25);
 
     const props = defineProps({
-        listing: Object
+        listing: Object,
+        offerMade: Object
     })
 
     const offer = ref(props.listing.price);
