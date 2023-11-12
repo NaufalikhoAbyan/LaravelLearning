@@ -38,6 +38,6 @@ Route::post('/register', [UserAccoutController::class, 'store'])->name('register
 
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function(){
     Route::put('/listing/{listing}/restore', [RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
-    Route::resource('/listing', RealtorListingController::class)->except(['show']);
+    Route::resource('/listing', RealtorListingController::class);
     Route::resource('/listing/{listing}/image', RealtorListingImageController::class)->only(['create', 'store', 'destroy']);
 });

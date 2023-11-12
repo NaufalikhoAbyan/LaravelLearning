@@ -23,6 +23,9 @@
                     <div class="mt-2">
                         <Link class="btn-outline text-xs font-medium w-full block text-center" :href="`/realtor/listing/${listing.id}/image/create`">Images ({{listing.images_count}})</Link>
                     </div>
+                    <div class="mt-2">
+                        <Link class="btn-outline text-xs font-medium w-full block text-center" :href="`/realtor/listing/${listing.id}`">Offers ({{listing.offers_count}})</Link>
+                    </div>
                 </div>
             </div>
         </Box>
