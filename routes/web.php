@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\RealtorListingAcceptOfferController;
 use App\Http\Controllers\RealtorListingController;
 use App\Http\Controllers\RealtorListingImageController;
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,5 @@ Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function()
     Route::put('/listing/{listing}/restore', [RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
     Route::resource('/listing', RealtorListingController::class);
     Route::resource('/listing/{listing}/image', RealtorListingImageController::class)->only(['create', 'store', 'destroy']);
+    Route::put('/offer/{offer}/accept', RealtorListingAcceptOfferController::class)->name('offer.accept');
 });
