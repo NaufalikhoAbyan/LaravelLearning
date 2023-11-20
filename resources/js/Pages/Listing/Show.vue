@@ -16,6 +16,7 @@
                 <Price :price="listing.price" class="text-2xl font-bold"/>
                 <ListingSpace :listing="listing" class="text-lg"/>
                 <ListingAddress :listing="listing" class="text-gray-500"/>
+                <div class="text-gray-500">Made By {{props.listing.owner.name}}</div>
             </Box>
             <Box class="mt-2">
                 <template #header>

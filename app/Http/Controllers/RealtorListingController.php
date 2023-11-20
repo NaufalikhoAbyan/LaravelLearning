@@ -18,8 +18,8 @@ class RealtorListingController extends Controller
     {
         $filters = [
             'deleted' => $request->boolean('deleted'),
-            'by' => $request->get('by'),
-            'order' => $request->get('order'),
+            'by' => $request->get('by') ?? 'created_at',
+            'order' => $request->get('order') ?? 'desc',
         ];
 
         return inertia('Realtor/Index', [

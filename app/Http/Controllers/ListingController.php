@@ -24,7 +24,7 @@ class ListingController extends Controller
 
         return inertia('Listing/Index', [
             'filters' => $filters,
-            'listings' => Listing::mostRecent()->filter($filters)->paginate(9)->withQueryString()
+            'listings' => Listing::mostRecent()->filter($filters)->withoutSold()->paginate(9)->withQueryString()
         ]);
     }
 
@@ -35,7 +35,7 @@ class ListingController extends Controller
     {
         $offer = !Auth::user() ? null : $listing->offers()->byMe()->first();
 
-        $listing->load('images');
+        $listing->load('images')->load('owner');
         return inertia('Listing/Show', [
             'listing' => $listing,
             'offerMade' => $offer

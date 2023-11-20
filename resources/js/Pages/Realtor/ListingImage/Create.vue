@@ -1,4 +1,7 @@
 <template>
+    <div class="mb-4">
+        <Link :href="`/realtor/listing`">← Go back to listings</Link>
+    </div>
     <Box>
         <template #header>Upload New Images</template>
         <form @submit.prevent="form.post(`/realtor/listing/${listing.id}/image`, {onSuccess: () => form.reset('images')})" >
