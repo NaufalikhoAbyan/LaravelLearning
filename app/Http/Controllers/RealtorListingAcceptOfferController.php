@@ -15,6 +15,10 @@ class RealtorListingAcceptOfferController extends Controller
         // Reject all other offers
         $offer->listing->offers()->except($offer)->update(['rejected_at' => now()]);
 
+        // Mark the listing as sold
+        $offer->listing->sold_at = now();
+        $offer->listing->save();
+
         return redirect()->back()->with('success', "Offer #{$offer->id} accepted! other offer rejected.");
     }
 }
