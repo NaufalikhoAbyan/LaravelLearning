@@ -9,6 +9,7 @@ class RealtorListingAcceptOfferController extends Controller
 {
     public function __invoke(Offer $offer)
     {
+        $this->authorize('update', $offer->listing);
         // Accept the selected offer
         $offer->update(['accepted_at' => now()]);
 

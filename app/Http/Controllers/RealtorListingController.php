@@ -80,6 +80,7 @@ class RealtorListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
+        $this->authorize('update', $listing);
         $listing->update(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',
